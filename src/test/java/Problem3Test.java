@@ -34,8 +34,31 @@ public class Problem3Test {
 
     @Test
     public void testInOrderTraverse() {
-        // homework
-        // to verify inOrderTraverse(TreeNode<Integer> node)
+        //      8
+        //     / \
+        //    3   10
+        //   / \   \
+        //  1   6   14
+        TreeNode<Integer> root = new TreeNode<>(8);
+        root.left = new TreeNode<>(3);
+        root.left.left = new TreeNode<>(1);
+        root.left.right = new TreeNode<>(6);
+        root.right = new TreeNode<>(10);
+        root.right.right = new TreeNode<>(14);
+        assertEquals(Arrays.asList(1, 3, 6, 8, 10, 14), inOrderTraverse(root));
+
+        //      8
+        //     / \
+        //    4   9
+        //   / \   \
+        //  2   5   10
+        root = new TreeNode<>(8);
+        root.left = new TreeNode<>(4);
+        root.left.left = new TreeNode<>(2);
+        root.left.right = new TreeNode<>(5);
+        root.right = new TreeNode<>(9);
+        root.right.right = new TreeNode<>(10);
+        assertEquals(Arrays.asList(2, 4, 5, 8, 9, 10), inOrderTraverse(root));
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
@@ -146,9 +169,12 @@ public class Problem3Test {
         //    N   N
         // homework
         // what problem can you see for insertInBst from this test case?
-        // answer:
+        // answer: All the treenodes will always be added to the right side of the tree, but not the left.
         // discuss how you would solve it in a comment below
-        // answer:
+        // answer: Have the left hand side add values either in a different order, or numbers that are less than one.
+
+        // Since all of the treenodes will be added to the right side, I don't think the binary tree can still
+        // guarantee fast search because it would make the treenodes into a linked list instead of binary search.
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));
